@@ -14,18 +14,12 @@ const image = require('./controllers/image');
 
 //knex configuration
 const db = knex({
-    client: 'pg',
-    connection: {
-      host : process.env.DB_HOST,
-      port: process.env.DB_PORT,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME
-    },
-    ssl: {
-      rejectUnauthorized: false, // You can set this to true if you have the necessary SSL certificates.
-    },
-  });
+  client: 'pg',
+  connection: process.env.DB_EXT_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
 
   // uses knex to build an sql query statement for postgres
   // has all the information used access the smart brain server
