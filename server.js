@@ -60,10 +60,10 @@ app.put('/image', (req, res) => { image.handleImage(req, res, db) })
 // new endpoint within the image.js file to process Clarifai API image requests and send back a response. 
 app.post('/imageurl', (req, res) => { image.handleApiCall(req, res) })
 
-// if we receieve a port from heroku, or any other cloud platform, run that first.
-// Otherwise, run port 3001 
-app.listen(process.env.PORT || 3001, () => {
-  console.log(`app is running successfully on ${process.env.PORT}`);
+const port = process.env.PORT || 3001; // Use process.env.PORT if available, otherwise use a default port (e.g., 3001)
+
+app.listen(port, () => {
+  console.log(`app is running successfully on ${port}`);
 });
 
  // Endpoints (If you were a backend dev working with fronend dev's, I would recommend letting them know what endpoints to expect beforehand)
