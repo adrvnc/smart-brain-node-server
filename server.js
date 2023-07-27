@@ -21,10 +21,7 @@ const db = knex({
       user: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME
-    },
-    ssl: {
-      rejectUnauthorized: false, // You can set this to true if you have the necessary SSL certificates.
-    },
+    }
   });
 
   // uses knex to build an sql query statement for postgres
@@ -65,9 +62,9 @@ app.post('/imageurl', (req, res) => { image.handleApiCall(req, res) })
 
 // if we receieve a port from heroku, or any other cloud platform, run that first.
 // Otherwise, run port 3001 
-app.listen( 3001 || process.env.PORT, () => {
-    console.log('app is running successfully');
-})
+app.listen(process.env.PORT || 3001, () => {
+  console.log(`app is running successfully on ${process.env.PORT}`);
+});
 
  // Endpoints (If you were a backend dev working with fronend dev's, I would recommend letting them know what endpoints to expect beforehand)
  /* 
