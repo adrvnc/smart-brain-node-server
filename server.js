@@ -66,7 +66,7 @@ app.post('/imageurl', (req, res) => { image.handleApiCall(req, res) })
 // if we receieve a port from heroku, or any other cloud platform, run that first.
 // Otherwise, run port 3001 
 app.listen( 3001 || process.env.PORT, () => {
-    console.log('app is running on successfully');
+    console.log('app is running successfully');
 })
 
  // Endpoints (If you were a backend dev working with fronend dev's, I would recommend letting them know what endpoints to expect beforehand)
