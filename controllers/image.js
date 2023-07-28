@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 // this block of code returns the Clarifai JSON Request
 const ReturnClarifaiRequestOptions = (imgUrl) => {
     // Your PAT (Personal Access Token) can be found in the portal under Authentification
@@ -44,7 +46,7 @@ const ReturnClarifaiRequestOptions = (imgUrl) => {
  // The server acts as the middleman and handles API calls and processes the API response before sending relevant data back to the client.
  // This approach is common in web applications where sensitive or complex API calls are performed on the server to prevent exposing API keys or other sensitive information to the client-side.
  const handleApiCall = (req, res) => {
-    fetch("https://api.clarifai.com/v2/models/face-detection/outputs", ReturnClarifaiRequestOptions(req.body.input))
+    axios.post("https://api.clarifai.com/v2/models/face-detection/outputs", ReturnClarifaiRequestOptions(req.body.input))
     .then(response => response.json())
     .then(data => {
         res.json(data);
